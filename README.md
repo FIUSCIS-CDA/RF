@@ -2,7 +2,7 @@
        RF
 
 #### DEPENDENCIES
-       Flopenr_32, Flopenr, DSwitch, MUX32_32, MUX32, Decoder_32
+       Flopenr_32, Flopenr, DSwitch, DESwitch, MUX32_32, MUX32, Decoder_32
 
 #### INPUTS
 Name  | Size(Bits)
