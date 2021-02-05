@@ -33,6 +33,7 @@ r2d  |     32
 
 #### AUTHOR
        Alexander T Pastoriza
+       Trevor Cickovski
 
 #### SEE ALSO
        qms(1), modclone(1)
