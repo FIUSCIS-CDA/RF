@@ -15,16 +15,16 @@ module testbench();
 //         wd (32-bit)
 reg clk, reset; 
 reg we;
-reg[4:0] r1a;
-reg[4:0] r2a;
+reg[4:0] ra1;
+reg[4:0] ra2;
 reg[4:0] wa;
 reg[31:0] wd;
 ///////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Outputs: r1d, r2d (32-bit)
-wire[31:0] r1d;
-wire[31:0] r2d;
+wire[31:0] rd1;
+wire[31:0] rd2;
 ///////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -33,8 +33,8 @@ wire[31:0] r2d;
 localparam CLK_PERIOD=20;
 ///////////////////////////////////////////////////////////////////////////////////
 
-RF myRegister(.clk(clk), .reset(reset), .we(we), .r1a(r1a), .r2a(r2a), .wa(wa), 
-              .wd(wd), .r1d(r1d), .r2d(r2d));
+RF myRegister(.clk(clk), .reset(reset), .we(we), .r1a(ra1), .r2a(ra2), .wa(wa), 
+              .wd(wd), .r1d(rd1), .r2d(rd2));
 integer stop;
 
 initial begin
@@ -45,8 +45,8 @@ $display("Testing reset: All Registers=0");
 reset=1;  #(CLK_PERIOD);
 stop=0;
 for (wa = 5'b00000; (stop == 0); wa = wa + 5'b00001) begin
-   verifyEqual32(r1d, 0);
-   verifyEqual32(r2d, 0);
+   verifyEqual32(rd1, 0);
+   verifyEqual32(rd2, 0);
    $display("Testing %b=0", wa);
    if (wa == 5'b11111) begin
       stop = 1;
@@ -59,9 +59,9 @@ end
 $display("Testing write enable (r1d=0, r2d=45)");
 reset=0; we=0; wa=5'b10011; wd=121; #(CLK_PERIOD);  
 we=1; wa=5'b01101; wd=45; #(CLK_PERIOD);
-r1a=5'b10011; r2a=5'b01101; #(CLK_PERIOD);
-verifyEqual32(r1d, 0);
-verifyEqual32(r2d, 45);
+ra1=5'b10011; ra2=5'b01101; #(CLK_PERIOD);
+verifyEqual32(rd1, 0);
+verifyEqual32(rd2, 45);
 /////////////////////////////////////////////////////////////////////////////
 
 $display("All tests passed.");
