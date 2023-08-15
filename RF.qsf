@@ -59,7 +59,6 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name BDF_FILE ../Flopenr/Flopenr.bdf
 set_global_assignment -name BDF_FILE ../DEswitch/DESwitch.bdf
-set_global_assignment -name BDF_FILE ../DSwitch/DSwitch.bdf
 set_global_assignment -name BDF_FILE ../MUX32_32/MUX32_32.bdf
 set_global_assignment -name BDF_FILE ../Decoder_32/Decoder_32.bdf
 set_global_assignment -name BDF_FILE ../MUX32/MUX32.bdf
